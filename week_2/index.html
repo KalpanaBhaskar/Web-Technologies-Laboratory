@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Job Application Portal</title>
+    <!-- Font Awesome for eye icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg: #f3f4f6;
+            --card-bg: #ffffff;
+            --text: #1f2937;
+            --text-muted: #6b7280;
+            --error: #dc2626;
+            --success: #16a34a;
+            --border: #d1d5db;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 550px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        /* Form Steps Visibility */
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Form groups & styling */
+        .form-group {
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        /* Password field wrapper for eye icon */
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 40px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        /* Error Messages */
+        .error-msg {
+            color: var(--error);
+            font-size: 0.825rem;
+            margin-top: 4px;
+            display: none;
+        }
+
+        input.invalid, select.invalid, textarea.invalid {
+            border-color: var(--error);
+            background-color: #fef2f2;
+        }
+
+        /* Buttons */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Success Screen */
+        .success-screen {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 15px;
+        }
+
+        .success-title {
+            color: var(--success);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- STEP 1: Registration Form -->
+    <form id="registrationForm" class="form-step active" novalidate>
+        <h2>Register to Access Portal</h2>
+        
+        <div class="form-group">
+            <label for="regName">Full Name</label>
+            <input type="text" id="regName" placeholder="John Doe">
+            <div class="error-msg" id="nameError">Full name should contain only alphabets and spaces.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="regEmail">Email Address</label>
+            <input type="email" id="regEmail" placeholder="john@example.com">
+            <div class="error-msg" id="emailError">Please enter a valid email format.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="regPhone">Phone Number</label>
+            <input type="text" id="regPhone" placeholder="10-digit number" maxlength="10">
+            <div class="error-msg" id="phoneError">Phone number must contain exactly 10 digits.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="regPassword">Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="regPassword" placeholder="••••••••">
+                <i class="fa-solid fa-eye toggle-password" data-target="regPassword"></i>
+            </div>
+            <div class="error-msg" id="passwordError">Must be 8+ chars with 1 uppercase, 1 lowercase, 1 number, and 1 special character.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="regConfirmPassword">Confirm Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="regConfirmPassword" placeholder="••••••••">
+                <i class="fa-solid fa-eye toggle-password" data-target="regConfirmPassword"></i>
+            </div>
+            <div class="error-msg" id="confirmPasswordError">Passwords do not match.</div>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <!-- STEP 2: Job Application Form -->
+    <form id="jobApplicationForm" class="form-step" novalidate>
+        <h2>Job Application Form</h2>
+
+        <div class="form-group">
+            <label for="jobPosition">Position</label>
+            <select id="jobPosition">
+                <option value="">-- Select Position --</option>
+                <option value="frontend">Frontend Developer</option>
+                <option value="backend">Backend Developer</option>
+                <option value="qa">QA Engineer</option>
+                <option value="pm">Product Manager</option>
+            </select>
+            <div class="error-msg" id="positionError">Position must be selected.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="jobLevel">Job Level</label>
+            <select id="jobLevel">
+                <option value="">-- Select Job Level --</option>
+                <option value="junior">Entry / Junior</option>
+                <option value="mid">Mid-Level</option>
+                <option value="senior">Senior</option>
+            </select>
+            <div class="error-msg" id="jobLevelError">Job Level must be selected.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="jobExperience">Experience (Years)</label>
+            <input type="number" id="jobExperience" placeholder="0 - 30">
+            <div class="error-msg" id="experienceError">Experience should be between 0 and 30 years.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="jobSkills">Skills</label>
+            <input type="text" id="jobSkills" placeholder="e.g. JavaScript, Python, SQL">
+            <div class="error-msg" id="skillsError">Skills field should not be empty.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="jobProjects">Describe Your Projects</label>
+            <textarea id="jobProjects" rows="4" placeholder="Minimum 50 characters required..."></textarea>
+            <div class="error-msg" id="projectsError">Project description must contain at least 50 characters.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="jobResume">Resume Upload (PDF or DOCX)</label>
+            <input type="file" id="jobResume" accept=".pdf,.docx">
+            <div class="error-msg" id="resumeError">Please upload your resume in PDF or DOCX format.</div>
+        </div>
+
+        <button type="submit">Submit Application</button>
+    </form>
+
+    <!-- STEP 3: Success View -->
+    <div id="successScreen" class="form-step success-screen">
+        <i class="fa-solid fa-circle-check success-icon"></i>
+        <h2 class="success-title">Application Submitted Successfully!</h2>
+        <p>Your registration and job application data have been accepted.</p>
+    </div>
+
+</div>
+
+<script>
+    // --- UTILITIES & SYSTEM STATE ---
+    const regForm = document.getElementById('registrationForm');
+    const jobForm = document.getElementById('jobApplicationForm');
+    const successScreen = document.getElementById('successScreen');
+
+    // Helper to toggle visibility of errors dynamically
+    function setValidity(inputEl, errorEl, isValid) {
+        if (isValid) {
+            inputEl.classList.remove('invalid');
+            errorEl.style.display = 'none';
+        } else {
+            inputEl.classList.add('invalid');
+            errorEl.style.display = 'block';
+        }
+        return isValid;
+    }
+
+    // --- PASSWORD EYE TOGGLE CONTROLLER ---
+    document.querySelectorAll('.toggle-password').forEach(icon => {
+        icon.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const passwordInput = document.getElementById(targetId);
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            }
+        });
+    });
+
+    // --- STEP 1: REGISTRATION FIELD VALIDATORS ---
+    function validateRegistration() {
+        let isValid = true;
+
+        // 1. Full Name: Alphabets and Spaces only
+        const nameEl = document.getElementById('regName');
+        const nameErr = document.getElementById('nameError');
+        const nameRegex = /^[A-Za-z\s]+$/;
+        if (!setValidity(nameEl, nameErr, nameRegex.test(nameEl.value.trim()))) isValid = false;
+
+        // 2. Email Verification
+        const emailEl = document.getElementById('regEmail');
+        const emailErr = document.getElementById('emailError');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!setValidity(emailEl, emailErr, emailRegex.test(emailEl.value.trim()))) isValid = false;
+
+        // 3. Phone: Exactly 10 digits
+        const phoneEl = document.getElementById('regPhone');
+        const phoneErr = document.getElementById('phoneError');
+        const phoneRegex = /^\d{10}$/;
+        if (!setValidity(phoneEl, phoneErr, phoneRegex.test(phoneEl.value.trim()))) isValid = false;
+
+        // 4. Password Check: 8+ length, Upper, Lower, Num, Special
+        const passEl = document.getElementById('regPassword');
+        const passErr = document.getElementById('passwordError');
+        const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (!setValidity(passEl, passErr, passRegex.test(passEl.value))) isValid = false;
+
+        // 5. Confirm Password Match
+        const confirmEl = document.getElementById('regConfirmPassword');
+        const confirmErr = document.getElementById('confirmPasswordError');
+        const matches = (passEl.value === confirmEl.value) && confirmEl.value !== "";
+        if (!setValidity(confirmEl, confirmErr, matches)) isValid = false;
+
+        return isValid;
+    }
+
+    // --- STEP 2: JOB APPLICATION FIELD VALIDATORS ---
+    function validateJobApplication() {
+        let isValid = true;
+
+        // Position Selection
+        const posEl = document.getElementById('jobPosition');
+        const posErr = document.getElementById('positionError');
+        if (!setValidity(posEl, posErr, posEl.value !== "")) isValid = false;
+
+        // Job Level Selection
+        const lvlEl = document.getElementById('jobLevel');
+        const lvlErr = document.getElementById('jobLevelError');
+        if (!setValidity(lvlEl, lvlErr, lvlEl.value !== "")) isValid = false;
+
+        // Experience: 0 - 30 bounds Check
+        const expEl = document.getElementById('jobExperience');
+        const expErr = document.getElementById('experienceError');
+        const expVal = parseInt(expEl.value, 10);
+        const expValid = !isNaN(expVal) && expVal >= 0 && expVal <= 30;
+        if (!setValidity(expEl, expErr, expValid)) isValid = false;
+
+        // Skills Empty String Evaluation
+        const skillsEl = document.getElementById('jobSkills');
+        const skillsErr = document.getElementById('skillsError');
+        if (!setValidity(skillsEl, skillsErr, skillsEl.value.trim() !== "")) isValid = false;
+
+        // Project Description: >= 50 chars length
+        const projEl = document.getElementById('jobProjects');
+        const projErr = document.getElementById('projectsError');
+        if (!setValidity(projEl, projErr, projEl.value.trim().length >= 50)) isValid = false;
+
+        // Resume: Extension evaluation (.pdf or .docx)
+        const fileEl = document.getElementById('jobResume');
+        const fileErr = document.getElementById('resumeError');
+        let fileValid = false;
+        if (fileEl.files.length > 0) {
+            const fileName = fileEl.files[0].name.toLowerCase();
+            if (fileName.endsWith('.pdf') || fileName.endsWith('.docx')) {
+                fileValid = true;
+            }
+        }
+        if (!setValidity(fileEl, fileErr, fileValid)) isValid = false;
+
+        return isValid;
+    }
+
+    // --- FORM TRANSITION TRIGGERS ---
+    regForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (validateRegistration()) {
+            regForm.classList.remove('active');
+            jobForm.classList.add('active');
+        }
+    });
+
+    jobForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (validateJobApplication()) {
+            jobForm.classList.remove('active');
+            successScreen.classList.add('active');
+        }
+    });
+</script>
+
+</body>
+</html>
