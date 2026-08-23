@@ -1,0 +1,72 @@
+/* Responsive Breakpoints & Media Queries for Arcade University */
+
+/* Large Desktop and above */
+@media (min-width: 1440px) {
+  .container {
+    max-width: var(--max-width-wide);
+  }
+}
+
+/* Notebook / Small Desktop */
+@media (max-width: 1200px) {
+  :root {
+    --spacing-xxl: 3rem;
+    --spacing-huge: 4.5rem;
+  }
+  .grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet (Landscape) */
+@media (max-width: 992px) {
+  :root {
+    --header-height: 70px;
+  }
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablet (Portrait) */
+@media (max-width: 768px) {
+  :root {
+    --spacing-xl: 1.5rem;
+    --spacing-xxl: 2.5rem;
+    --spacing-huge: 3rem;
+  }
+
+  .section {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+  :root {
+    --spacing-lg: 1rem;
+  }
+  
+  .section {
+    padding: var(--spacing-lg) 0;
+  }
+}
+
+/* Very Small Devices */
+@media (max-width: 360px) {
+  body {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,116 @@
+.philosophyBlock {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.subheading {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.paragraph {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  margin-bottom: var(--spacing-md);
+}
+
+.ctaFlex {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* Housing Specific Styles */
+.splitBox {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.housingImg {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-sm);
+  background-color: var(--color-bg-light);
+}
+
+.houseCard {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  padding: var(--spacing-lg);
+  border-top: 3px solid var(--color-secondary);
+}
+
+.houseTitle {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Clubs Page Styles */
+.clubCard {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.clubTitle {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.clubType {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-sm);
+  display: inline-block;
+}
+
+/* Facilities list */
+.facList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.facItem {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  padding: var(--spacing-lg);
+  border-left: 3px solid var(--color-accent);
+}
+
+.facTitle {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+@media (max-width: 768px) {
+  .splitBox {
+    grid-template-columns: 1fr;
+  }
+  
+  .housingImg {
+    height: 250px;
+  }
+}

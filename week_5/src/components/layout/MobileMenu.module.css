@@ -1,0 +1,161 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeInOverlay 0.3s ease-out;
+}
+
+.drawer {
+  width: 85%;
+  max-width: 380px;
+  height: 100%;
+  background-color: var(--color-bg-light);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  animation: slideInDrawer 0.3s ease-out;
+}
+
+.drawerHeader {
+  height: var(--header-height);
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.logoPlaceholder {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  letter-spacing: 2px;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-md) 0;
+}
+
+.accordionGroup {
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.accordionHeader {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sectionTitle {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.chevron {
+  font-size: 0.8rem;
+  transition: transform var(--transition-normal);
+  color: var(--color-accent);
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.accordionContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-normal) ease-out;
+  background-color: var(--color-bg-warm);
+}
+
+.expanded {
+  max-height: 350px; /* Safe bound for accordion submenus */
+}
+
+.submenuList {
+  list-style: none;
+  padding: var(--spacing-sm) 0;
+}
+
+.submenuItem {
+  margin: 0;
+}
+
+.submenuLink, .overviewLink {
+  display: block;
+  padding: var(--spacing-sm) calc(var(--spacing-lg) + var(--spacing-sm));
+  font-size: 0.95rem;
+  color: var(--color-text-dark);
+}
+
+.overviewLink {
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.submenuLink:hover, .overviewLink:hover {
+  background-color: rgba(197, 160, 89, 0.1);
+  color: var(--color-primary);
+}
+
+.drawerFooter {
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.applyBtn {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-md);
+  text-align: center;
+  background-color: var(--color-secondary);
+  color: var(--color-bg-light);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+.applyBtn:hover {
+  background-color: var(--color-primary);
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInDrawer {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}

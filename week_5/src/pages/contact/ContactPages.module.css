@@ -1,0 +1,279 @@
+/* Contact Section Shared Styles */
+
+.introBlock {
+  max-width: 800px;
+}
+
+.subheading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.paragraph {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+}
+
+/* Contact Info Grid */
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.infoCard {
+  background: var(--color-bg-warm);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+}
+
+.infoCardTitle {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.infoCardText {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.infoCardText a {
+  color: var(--color-secondary);
+}
+
+.infoCardText a:hover {
+  text-decoration: underline;
+}
+
+/* Contact Form */
+.formSection {
+  max-width: 680px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.75rem var(--spacing-md);
+  border: 1.5px solid var(--color-border);
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-text-dark);
+  background: var(--color-bg-light);
+  transition: border-color var(--transition-fast);
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.inputError {
+  border-color: var(--color-secondary);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.errorMsg {
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+  margin-top: 2px;
+}
+
+.successBox {
+  background: #eef8f0;
+  border: 1.5px solid #6abf7a;
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+.successBox h3 {
+  color: #2d7a3a;
+  margin-bottom: var(--spacing-sm);
+}
+
+.successBox p {
+  color: #3a6641;
+  font-size: 0.95rem;
+}
+
+/* Admissions Office */
+.officeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.detailBlock {
+  background: var(--color-bg-warm);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+}
+
+.detailTitle {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.detailList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.detailList li {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.detailList a {
+  color: var(--color-secondary);
+}
+
+.appointmentList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.appointmentItem {
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 0 6px 6px 0;
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.appointmentItem h4 {
+  font-size: 1rem;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.appointmentItem p {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Campus Map */
+.mapWrapper {
+  background: var(--color-bg-warm);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: var(--spacing-xl);
+}
+
+.mapCanvas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 140px);
+  gap: 2px;
+  background: var(--color-border);
+}
+
+.mapZone {
+  background: var(--color-bg-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  text-align: center;
+  transition: background var(--transition-fast);
+}
+
+.mapZone:hover {
+  background: #eef3ff;
+}
+
+.mapZoneIcon {
+  font-size: 1.8rem;
+}
+
+.mapZoneLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.03em;
+}
+
+.buildingsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.buildingCard {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-bg-light);
+}
+
+.buildingCard h4 {
+  font-size: 1rem;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.buildingCard p {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .officeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mapCanvas {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 120px);
+  }
+}

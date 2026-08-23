@@ -1,0 +1,291 @@
+.introFlex {
+  display: flex;
+  gap: var(--spacing-xl);
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.textContent {
+  flex: 1;
+  min-width: 320px;
+}
+
+.subheading {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.paragraph {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+}
+
+.sidebarBox {
+  width: 320px;
+  background-color: var(--color-bg-warm);
+  border-left: 3px solid var(--color-accent);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebarTitle {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-xs);
+}
+
+.sidebarList {
+  list-style: none;
+}
+
+.sidebarList li {
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-dark);
+}
+
+.sidebarList strong {
+  color: var(--color-secondary);
+}
+
+.valueCard {
+  background-color: var(--color-bg-light);
+  border-top: 3px solid var(--color-accent);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.valueTitle {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.valueDesc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.ctaTitle {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.ctaText {
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-lg);
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* Vision / Mission Specific Styles */
+.visionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.visionItem {
+  padding: var(--spacing-xl);
+  background-color: var(--color-bg-warm);
+  border: 1px solid var(--color-border-light);
+}
+
+.visionTitle {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: var(--spacing-xs);
+  display: inline-block;
+}
+
+/* Leadership Specific Styles */
+.leadersGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
+}
+
+.leaderCard {
+  text-align: center;
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  padding: var(--spacing-xl) var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.leaderAvatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--color-bg-warm);
+  margin: 0 auto var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  border: 2px solid var(--color-accent);
+}
+
+.leaderName {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: 2px;
+}
+
+.leaderRole {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1.0px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.leaderBio {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* History Specific Styles */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background-color: var(--color-border);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+.timelineItem {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+.timelineItem::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: -8px;
+  background-color: var(--color-bg-light);
+  border: 3px solid var(--color-accent);
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.leftTimeline {
+  left: 0;
+  text-align: right;
+}
+
+.rightTimeline {
+  left: 50%;
+}
+
+.rightTimeline::after {
+  left: -8px;
+}
+
+.timelineContent {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--color-bg-warm);
+  position: relative;
+  border-radius: 2px;
+  border: 1px solid var(--color-border-light);
+}
+
+.timelineYear {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.timelineTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.timelineDesc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .visionGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .leadersGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline::after {
+    left: 31px;
+  }
+  
+  .timelineItem {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+    text-align: left;
+  }
+  
+  .timelineItem::after {
+    left: 22px;
+  }
+  
+  .leftTimeline {
+    left: 0;
+  }
+  
+  .rightTimeline {
+    left: 0;
+  }
+}
