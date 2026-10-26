@@ -1,0 +1,74 @@
+<!-- register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input { width: 300px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 15px; background-color: #28a745; color: white; border: none; cursor: pointer; border-radius: 4px; }
+        button:hover { background-color: #218838; }
+        #responseMessage { margin-top: 15px; font-weight: bold; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h2>Add New Student</h2>
+    
+    <form id="registrationForm">
+        <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course" placeholder="Computer Science" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+    
+    <div id="responseMessage"></div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent standard form submission
+            
+            // Gather form data
+            const name = document.getElementById('name').value;
+            const course = document.getElementById('course').value;
+            const messageDiv = document.getElementById('responseMessage');
+            
+            // Create JSON payload
+            const payload = { name: name, course: course };
+
+            try {
+                // Send data to the REST API via POST
+                const response = await fetch('/api/students', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                // Handle HTTP response codes
+                if (response.status === 201 || response.status === 200) { // Created or OK
+                    const responseData = await response.json();
+                    messageDiv.innerHTML = `<p class="success">Success: ${responseData.message} (ID: ${responseData.student.id})</p>`;
+                    document.getElementById('registrationForm').reset(); // Clear the form
+                } else if (response.status === 400) {
+                    messageDiv.innerHTML = '<p class="error">Error 400: Bad Request. Missing name or course.</p>';
+                } else {
+                    messageDiv.innerHTML = `<p class="error">Error ${response.status}: Failed to register student.</p>`;
+                }
+            } catch (error) {
+                messageDiv.innerHTML = '<p class="error">Network error: Could not connect to the API.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
